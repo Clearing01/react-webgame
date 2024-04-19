@@ -1,10 +1,10 @@
-import React from 'react';
 import { RouteObject, useRoutes } from 'react-router-dom';
 
 import Layout from '../layout/MainLayout';
-import Main from "../pages/main/main";
+import Index from "../pages/main";
 import Gugudan from "../pages/main/Gugudan";
 import RelayWord from "../pages/main/RelayWord";
+import NumberBaseball from "../pages/main/NumberBaseball.tsx";
 
 const routes: RouteObject = {
 	path: '/*',
@@ -13,7 +13,7 @@ const routes: RouteObject = {
 		{
 			index: true,
 			path: '/*',
-			element: <Main />,
+			element: <Index />,
 		},
 		{
 			path: 'gugudan',
@@ -24,6 +24,11 @@ const routes: RouteObject = {
 			path: 'relayword',
 			element: <RelayWord />,
 			id: '끝말잇기',
+		},
+		{
+			path: 'numberbaseball',
+			element: <NumberBaseball />,
+			id: '숫자야구',
 		},
 	],
 };

@@ -1,9 +1,8 @@
-import React from 'react';
 import { useNavigate } from "react-router-dom";
 import Router from "../../router";
 
 
-const Main = () => {
+const Index = () => {
   const navigate = useNavigate();
   const router = Router();
   const gameList = router?.props.match.route.children.filter((route: any) => !!route.id);
@@ -25,4 +24,4 @@ const Main = () => {
     </>
   );
 };
-export default Main;
+export default Index;

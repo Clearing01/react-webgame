@@ -1,8 +1,7 @@
 import React, { useRef, useState } from 'react';
-import { useNavigate } from "react-router-dom";
+import GoMainButton from "../../components/GoMainButton.tsx";
 
 const Gugudan = () => {
-  const navigate = useNavigate();
   const [firstNumber, setFirstNumber] = useState<number>(Math.floor(Math.random() * 9) + 1);
   const [secondNumber, setSecondNumber] = useState<number>(Math.floor(Math.random() * 9) + 1);
   const [answer, setAnswer] = useState<string>('');
@@ -29,8 +28,6 @@ const Gugudan = () => {
     inputRef.current?.focus();
   }
 
-  const goMain = () => navigate('/');
-
   return (
     <>
       <div style={{ marginBottom: '20px' }}>
@@ -43,9 +40,7 @@ const Gugudan = () => {
         <p>{correct ? `정답: ${prevAnswerRef.current}` : '땡'}</p>
       </div>
 
-      <button onClick={goMain}>
-        메인으로 이동
-      </button>
+      <GoMainButton />
     </>
   );
 };
