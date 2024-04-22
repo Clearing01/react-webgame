@@ -1,5 +1,12 @@
-import GoMainButton from "../../components/GoMainButton.tsx";
-import {useState} from "react";
+import GoMainButton from "../../../components/GoMainButton.tsx";
+import React, {useState} from "react";
+import Try from "./Try.tsx";
+
+
+interface TryInfo {
+  try: string;
+  result: string;
+}
 
 const getFourDigits = () => {
   const digits:number[] = [];
@@ -13,10 +20,11 @@ const getFourDigits = () => {
 };
 
 const NumberBaseball = () => {
-  const [target, setTarget] = useState(getFourDigits());
+  const [target, setTarget] = useState(getFourDigits);
   const [guess, setGuess] = useState<string>('');
   const [result, setResult] = useState<string>('');
-  const [tries, setTries] = useState<string[]>([]);
+  const [tries, setTries] = useState<TryInfo[]>([]);
+  const inputRef = React.useRef<HTMLInputElement>(null);
 
   const handleChange = (e:any) => {
     setGuess(e.target.value);
@@ -24,7 +32,7 @@ const NumberBaseball = () => {
 
   const handleSubmit = (e:any) => {
     e.preventDefault();
-    if(guess.length !== 4 || tries.includes(guess)) {
+    if(guess.length !== 4 || tries.find((v) => v.try === guess)) {
       setGuess('');
       return;
     }
@@ -40,8 +48,8 @@ const NumberBaseball = () => {
       }
     }
 
-    setTries([...tries, guess]);
-    setResult(`스트라이크: ${strike}, 볼: ${ball}`);
+    setTries([...tries, { try: guess, result: `스트라이크: ${strike}, 볼: ${ball}`}]);
+    setResult('');
 
     if (strike === 4) {
       setTarget(getFourDigits());
@@ -50,22 +58,28 @@ const NumberBaseball = () => {
     }
 
     setGuess('');
+    inputRef.current?.focus();
   };
 
   return (
-    <div>
-      <form onSubmit={handleSubmit}>
-        <input type="text" value={guess} onChange={handleChange} maxLength={4} />
-        <button type="submit">제출</button>
-      </form>
-      <p>{result}</p>
+    <>
       <div>
-        시도: {tries.map((t, i) => (
-          <div key={t}>{i + 1}. {t}</div>
-        ))}
+        <form onSubmit={handleSubmit}>
+          <input ref={inputRef} type="text" value={guess} onChange={handleChange} maxLength={4} />
+          <button type="submit">제출</button>
+        </form>
+        <p>{result}</p>
+        <div> 시도: {tries.length} </div>
+        <ul>
+          {tries.map((t: TryInfo) => (
+            <div key={t.try}>
+              <Try tryInfo={t} />
+            </div>
+          ))}
+        </ul>
       </div>
       <GoMainButton />
-    </div>
+    </>
   );
 }
 

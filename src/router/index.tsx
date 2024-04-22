@@ -1,10 +1,13 @@
 import { RouteObject, useRoutes } from 'react-router-dom';
+import React from "react";
 
 import Layout from '../layout/MainLayout';
 import Index from "../pages/main";
 import Gugudan from "../pages/main/Gugudan";
 import RelayWord from "../pages/main/RelayWord";
-import NumberBaseball from "../pages/main/NumberBaseball.tsx";
+import NumberBaseball from "../pages/main/numberBaseball/NumberBaseball.tsx";
+import ResponseCheck from "../pages/main/responseCheck/ResponseCheck.tsx";
+import RSP from "../pages/main/rsp/RSP.tsx";
 
 const routes: RouteObject = {
 	path: '/*',
@@ -29,6 +32,16 @@ const routes: RouteObject = {
 			path: 'numberbaseball',
 			element: <NumberBaseball />,
 			id: '숫자야구',
+		},
+		{
+			path: 'responsecheck',
+			element: <ResponseCheck />,
+			id: '반응속도 체크',
+		},
+		{
+			path: 'rsp',
+			element: <RSP />,
+			id: '가위바위보',
 		},
 	],
 };

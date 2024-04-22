@@ -39,7 +39,6 @@ const Gugudan = () => {
         </form>
         <p>{correct ? `정답: ${prevAnswerRef.current}` : '땡'}</p>
       </div>
-
       <GoMainButton />
     </>
   );
