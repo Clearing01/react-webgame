@@ -1,4 +1,4 @@
-import GoMainButton from "../../../components/GoMainButton.tsx";
+import GoMainButton from "../../components/GoMainButton.tsx";
 import React from "react";
 import style from './ResponseCheck.module.css';
 

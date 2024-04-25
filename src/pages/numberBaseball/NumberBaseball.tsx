@@ -1,4 +1,4 @@
-import GoMainButton from "../../../components/GoMainButton.tsx";
+import GoMainButton from "../../components/GoMainButton.tsx";
 import React, {useState} from "react";
 import Try from "./Try.tsx";
 
