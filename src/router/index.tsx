@@ -10,6 +10,7 @@ import ResponseCheck from "../pages/responseCheck/ResponseCheck.tsx";
 import RSP from "../pages/rsp/RSP.tsx";
 import Lotto from "../pages/lotto/Lotto.tsx";
 import TicTacToe from "../pages/tictactoe/TicTacToe.tsx";
+import MineSearch from "../pages/mineSearch/MineSearch.tsx";
 
 const routes: RouteObject = {
 	path: '/*',
@@ -54,6 +55,11 @@ const routes: RouteObject = {
 			path: 'tictactoe',
 			element: <TicTacToe />,
 			id: '틱택토',
+		},
+		{
+			path: 'minesearch',
+			element: <MineSearch />,
+			id: '지뢰찾기',
 		},
 	],
 };
